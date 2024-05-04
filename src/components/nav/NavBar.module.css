@@ -1,0 +1,27 @@
+.navbar {
+  padding-left: 1rem;
+}
+.navbar div {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.navbar h3 {
+  padding-bottom: 0.6rem;
+  color: #555;
+  font-weight: bold;
+}
+
+.navbar a {
+  color: #777;
+}
+.navbar i {
+  color: #815eff;
+  padding-right: 0.6rem;
+}
+.navbar a {
+  padding-left: 1rem;
+}
+.navbar a:hover {
+  color: #815ef0;
+}
