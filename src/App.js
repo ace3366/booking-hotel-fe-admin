@@ -34,12 +34,14 @@ import {
   loader as newRoomLoader,
 } from "./components/form/NewRoomForm";
 import NewRoom from "./pages/NewRoom";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   { path: "/login", element: <Login />, action: loginAction },
   {
     path: "/",
     element: <Layout />,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       { index: true, element: <Navigate to="login" /> },
       { path: "dashboard", element: <Dashboard />, loader: dashboardLoader },

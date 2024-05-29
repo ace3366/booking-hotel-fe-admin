@@ -37,24 +37,31 @@ export default function Login() {
 }
 
 export async function action({ request, params }) {
-  const data = await request.formData();
-  const admin = {
-    username: data.get("username"),
-    password: data.get("password"),
-    isAdmin: true,
-  };
-  const response = await fetch(`${process.env.REACT_APP_API}/admin-login`, {
-    method: "POST",
-    body: JSON.stringify(admin),
-    headers: { "Content-Type": "application/json" },
-  });
+  try {
+    const data = await request.formData();
+    const admin = {
+      username: data.get("username"),
+      password: data.get("password"),
+      isAdmin: true,
+    };
+    const response = await fetch(`${process.env.REACT_APP_API}/admin-login`, {
+      method: "POST",
+      body: JSON.stringify(admin),
+      headers: { "Content-Type": "application/json" },
+    });
 
-  const resData = await response.json();
+    const resData = await response.json();
 
-  if (resData.username) {
-    setData("admin", resData);
-    return redirect("/dashboard");
-  } else {
-    return resData;
+    if (resData.username) {
+      setData("admin", resData);
+      return redirect("/dashboard");
+    } else {
+      return resData;
+    }
+  } catch (err) {
+    return {
+      announce:
+        "Something went wrong with the server now, it may take some time",
+    };
   }
 }
